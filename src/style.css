@@ -1,0 +1,59 @@
+.letters {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: var(--width);
+}
+
+.letter {
+  display: grid;
+}
+
+.even-end + .even-start,
+.odd-end + .odd-start {
+  margin-left: var(--width);
+}
+
+.odd-start:first-child {
+  margin-left: calc(var(--width) * -1);
+}
+
+.column {
+  width: var(--width);
+  display: grid;
+  row-gap: var(--width);
+}
+.column-asc {
+  position: relative;
+  bottom: var(--width);
+}
+
+.column span {
+  display: inline-block;
+  width: var(--sq-width);
+  height: var(--sq-width);
+  transform: rotate(45deg);
+  transform-origin: top left;
+  background-color: black;
+}
+
+.image {
+  position: relative;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  transform: rotate(45deg);
+}
+.image .image-part {
+  position: absolute;
+  top: 0;
+  transform-origin: bottom center;
+}
+.image .image-part:nth-child(2) {
+  transform: rotate(90deg);
+}
+.image .image-part:nth-child(3) {
+  transform: rotate(180deg);
+}
+.image .image-part:nth-child(4) {
+  transform: rotate(270deg);
+}
