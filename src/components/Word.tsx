@@ -58,12 +58,14 @@ export default function Word(props: Props) {
     <div>
       <div
         className="image"
-        style={{
-          '--width': WIDTH + 'px',
-          '--sq-width': SQ_WIDTH + 'px',
-          width: height * 2,
-          height: height * 2,
-        }}
+        style={
+          {
+            '--width': WIDTH + 'px',
+            '--sq-width': SQ_WIDTH + 'px',
+            width: height * 2,
+            height: height * 2,
+          } as React.CSSProperties
+        }
       >
         {Array(4)
           .fill('')
