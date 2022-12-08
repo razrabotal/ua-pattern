@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <div>
-      <div>
+      <div className="header">
         <input
           type="text"
           value={word}
