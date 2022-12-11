@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { SQ_WIDTH, WIDTH } from '../constants/config';
 import { getMaxRowWidth, getWordArray } from '../utils';
 import {
@@ -64,7 +63,7 @@ export default function Word(props: Props) {
             '--sq-width': SQ_WIDTH + 'px',
             width: height * 2,
             height: height * 2,
-          } as React.CSSProperties
+          } as CSSProperties
         }
       >
         {Array(4)

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { WIDTH } from '../constants/config';
 
 interface Props {
