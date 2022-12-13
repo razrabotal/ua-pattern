@@ -47,6 +47,7 @@
   width: 0;
   height: 0;
   transform: rotate(45deg);
+  margin-bottom: 20px;
 }
 .image .image-part {
   position: absolute;

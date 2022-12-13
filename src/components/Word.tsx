@@ -1,4 +1,10 @@
-import { CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  CSSProperties,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { SQ_WIDTH, WIDTH } from '../constants/config';
 import { getMaxRowWidth, getWordArray } from '../utils';
 import {
@@ -6,6 +12,7 @@ import {
   lettersWithoutBottomOffset,
 } from '../constants/kerning';
 import Row from './Row';
+import { Button } from 'antd';
 
 interface Props {
   word: string;
@@ -96,7 +103,7 @@ export default function Word(props: Props) {
       </div>
 
       {marginLeft.length > 0 && (
-        <button onClick={() => setMarginLeft([])}>Reset</button>
+        <Button onClick={() => setMarginLeft([])}>Reset</Button>
       )}
     </div>
   );
