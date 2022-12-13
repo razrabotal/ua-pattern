@@ -13,9 +13,11 @@ export default function App() {
   const [altLayout, setAltLayout] = useState<boolean>(false);
 
   const handleCaptureClick = async () => {
-    const canvas = await html2canvas(document.querySelector('.image')!);
+    const canvas = await html2canvas(document.querySelector('.image')!, {
+      backgroundColor: null,
+    });
     const dataURL = canvas.toDataURL('image/png');
-    downloadjs(dataURL, 'download.png', 'image/png');
+    downloadjs(dataURL, `${word}.png`, 'image/png');
   };
 
   return (
