@@ -35,21 +35,30 @@ export default function Circular(props: Props) {
     <div className="text-wrapper">
       <div
         className="circle-wrapper"
-        style={{ padding: width / 8 }}
+        style={{
+          padding: width / 7,
+        }}
         ref={elRef}
       >
+        <div
+          className="inside-border"
+          style={{
+            border: `${width / 50}px solid #b8b8b8`,
+          }}
+        ></div>
         <ReactCurvedText
           key={elRef}
           width={width}
           height={width}
           cx={width / 2}
           cy={width / 2}
-          rx={width / 2.35}
-          ry={width / 2.35}
-          startOffset={width / 3.8}
+          rx={width / 2.45}
+          ry={width / 2.45}
+          startOffset={width / 4.3}
           reversed={true}
           text="Академія дронаріум"
           textProps={{ style: { fontSize: width / 15 } }}
+          textPathProps={{ fill: '#b8b8b8' }}
         />
 
         <Word {...props} />
@@ -60,12 +69,13 @@ export default function Circular(props: Props) {
           height={width}
           cx={width / 2}
           cy={width / 2}
-          rx={width / 2.1}
-          ry={width / 2.1}
-          startOffset={width * (3 / 3.98) - (props.name.length * width) / 33}
+          rx={width / 2.2}
+          ry={width / 2.2}
+          startOffset={width * (3 / 4) - (props.name.length * width) / 33}
           reversed={false}
           text={props.name}
           textProps={{ style: { fontSize: width / 12 } }}
+          textPathProps={{ fill: '#b8b8b8' }}
         />
       </div>
     </div>

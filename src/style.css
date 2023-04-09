@@ -40,7 +40,7 @@
   height: var(--sq-width);
   transform: rotate(45deg);
   transform-origin: top left;
-  background-color: black;
+  background-color: #b8b8b8;
 }
 
 .image {
@@ -66,14 +66,16 @@
 }
 
 .circle-wrapper {
+  position: relative;
   display: inline-block;
-  border: 1px solid #aaa;
   border-radius: 9999px;
+  background-color: #262626;
 }
 
 .text-wrapper {
   position: relative;
   margin-bottom: 20px;
+  margin: 30px;
 }
 
 .text-wrapper svg {
@@ -84,7 +86,19 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: #b8b8b8;
 }
 .text-wrapper svg:last-child {
   letter-spacing: 8px;
+}
+
+.inside-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999999px;
+
+  box-sizing: border-box;
 }
