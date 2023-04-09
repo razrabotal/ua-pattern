@@ -33,19 +33,20 @@ export default function Circular(props: Props) {
 
   return (
     <div className="text-wrapper">
-      {/* <div className="text-above">
-    
-      </div> */}
-      <div className="circle-wrapper" ref={elRef}>
+      <div
+        className="circle-wrapper"
+        style={{ padding: width / 8 }}
+        ref={elRef}
+      >
         <ReactCurvedText
           key={elRef}
           width={width}
           height={width}
           cx={width / 2}
           cy={width / 2}
-          rx={width / 2 - 65}
-          ry={width / 2 - 65}
-          startOffset={width / 4}
+          rx={width / 2.35}
+          ry={width / 2.35}
+          startOffset={width / 3.8}
           reversed={true}
           text="Академія дронаріум"
           textProps={{ style: { fontSize: width / 15 } }}
@@ -59,9 +60,9 @@ export default function Circular(props: Props) {
           height={width}
           cx={width / 2}
           cy={width / 2}
-          rx={width / 2 - 15}
-          ry={width / 2 - 15}
-          startOffset={width * (3 / 4) - (props.name.length * width) / 38}
+          rx={width / 2.1}
+          ry={width / 2.1}
+          startOffset={width * (3 / 3.98) - (props.name.length * width) / 33}
           reversed={false}
           text={props.name}
           textProps={{ style: { fontSize: width / 12 } }}

@@ -16,9 +16,12 @@ export default function App() {
   const [altLayout, setAltLayout] = useState<boolean>(false);
 
   const handleCaptureClick = async () => {
-    const canvas = await html2canvas(document.querySelector('.image')!, {
-      backgroundColor: null,
-    });
+    const canvas = await html2canvas(
+      document.querySelector('.circle-wrapper')!,
+      {
+        backgroundColor: null,
+      }
+    );
     const dataURL = canvas.toDataURL('image/png');
     downloadjs(dataURL, `${word}.png`, 'image/png');
   };
@@ -34,6 +37,12 @@ export default function App() {
             <Input
               value={word}
               onChange={(e) => setWord(e.target.value.toLowerCase())}
+            />
+          </Col>
+          <Col flex={1}>
+            <Input
+              value={name}
+              onChange={(e) => setName(e.target.value.toLowerCase())}
             />
           </Col>
           <Col flex={3}>
@@ -77,11 +86,6 @@ export default function App() {
         name={name}
       />
 
-      <Input
-        value={name}
-        onChange={(e) => setName(e.target.value.toLowerCase())}
-      />
-      <br />
       <br />
       <Paragraph>
         dev:{' '}

@@ -13,7 +13,6 @@ import {
 } from '../constants/kerning';
 import Row from './Row';
 import { Button } from 'antd';
-import ReactCurvedText from 'react-curved-text';
 
 interface Props {
   word: string;

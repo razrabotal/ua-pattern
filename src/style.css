@@ -67,22 +67,23 @@
 
 .circle-wrapper {
   display: inline-block;
-  padding: 100px;
-  border: 1px solid#444;
-  border-radius: 500px;
+  border: 1px solid #aaa;
+  border-radius: 9999px;
 }
 
 .text-wrapper {
   position: relative;
+  margin-bottom: 20px;
 }
+
 .text-wrapper svg {
   position: absolute;
   top: 0;
   left: 0;
   font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 45px;
 }
 .text-wrapper svg:last-child {
   letter-spacing: 8px;
