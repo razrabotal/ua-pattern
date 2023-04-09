@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Word from './components/Word';
+import Circular from './components/Circular';
 import downloadjs from 'downloadjs';
 import html2canvas from 'html2canvas';
 import { Row, Col, Input, Button, Checkbox, Typography } from 'antd';
@@ -67,7 +67,8 @@ export default function App() {
         </Row>
       </div>
       <br />
-      <Word
+
+      <Circular
         ceilMath={ceilMath}
         hasWidthOffset={hasWidthOffset}
         altLayout={altLayout}

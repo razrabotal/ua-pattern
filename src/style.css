@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&display=swap');
+
 .header {
   position: relative;
   z-index: 2;
@@ -47,7 +49,6 @@
   width: 0;
   height: 0;
   transform: rotate(45deg);
-  margin-bottom: 20px;
 }
 .image .image-part {
   position: absolute;
@@ -62,4 +63,17 @@
 }
 .image .image-part:nth-child(4) {
   transform: rotate(270deg);
+}
+
+.text-wrapper {
+  position: relative;
+}
+.text-wrapper svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 45px;
 }

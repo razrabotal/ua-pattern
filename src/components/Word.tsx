@@ -13,6 +13,7 @@ import {
 } from '../constants/kerning';
 import Row from './Row';
 import { Button } from 'antd';
+import ReactCurvedText from 'react-curved-text';
 
 interface Props {
   word: string;
@@ -61,7 +62,7 @@ export default function Word(props: Props) {
   }
 
   return (
-    <div>
+    <>
       <div
         className="image"
         style={
@@ -105,6 +106,6 @@ export default function Word(props: Props) {
       {marginLeft.length > 0 && (
         <Button onClick={() => setMarginLeft([])}>Reset</Button>
       )}
-    </div>
+    </>
   );
 }
