@@ -103,9 +103,9 @@ export default function Word(props: Props) {
           ))}
       </div>
 
-      {marginLeft.length > 0 && (
+      {/* {marginLeft.length > 0 && (
         <Button onClick={() => setMarginLeft([])}>Reset</Button>
-      )}
+      )} */}
     </>
   );
 }

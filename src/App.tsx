@@ -9,6 +9,7 @@ import './style.css';
 
 export default function App() {
   const [word, setWord] = useState<string>('drone');
+  const [name, setName] = useState<string>('Зеленський');
 
   const [ceilMath, setCeilMath] = useState<boolean>(true);
   const [hasWidthOffset, setHasWidthOffset] = useState<boolean>(false);
@@ -73,7 +74,14 @@ export default function App() {
         hasWidthOffset={hasWidthOffset}
         altLayout={altLayout}
         word={word}
+        name={name}
       />
+
+      <Input
+        value={name}
+        onChange={(e) => setName(e.target.value.toLowerCase())}
+      />
+      <br />
       <br />
       <Paragraph>
         dev:{' '}
