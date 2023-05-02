@@ -71,7 +71,9 @@ export default function Circular(props: Props) {
           cy={width / 2}
           rx={width / 2.2}
           ry={width / 2.2}
-          startOffset={width * (3 / 4) - (props.name.length * width) / 33}
+          startOffset={
+            (width * 2.84) / 4 - ((props.name.length / 2) * width) / 16.8
+          }
           reversed={false}
           text={props.name}
           textProps={{ style: { fontSize: width / 12 } }}
