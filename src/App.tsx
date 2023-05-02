@@ -10,6 +10,8 @@ import './style.css';
 export default function App() {
   const [word, setWord] = useState<string>('drone');
   const [name, setName] = useState<string>('Зеленський');
+  const [bgColor, setBgColor] = useState<string>('#262626');
+  const [textColor, setTextColor] = useState<string>('#b8b8b8');
 
   const [ceilMath, setCeilMath] = useState<boolean>(true);
   const [hasWidthOffset, setHasWidthOffset] = useState<boolean>(false);
@@ -27,12 +29,19 @@ export default function App() {
   };
 
   return (
-    <div>
+    <div
+      style={
+        {
+          '--bg-color': bgColor,
+          '--text-color': textColor,
+        } as React.CSSProperties
+      }
+    >
       <div className="header">
         <Title level={5} style={{ margin: '0 0 10px' }}>
           droneidentity
         </Title>
-        <Row gutter={16} align={'middle'}>
+        <Row gutter={16} align={'middle'} style={{ marginBottom: 8 }}>
           <Col flex={1}>
             <Input
               value={word}
@@ -73,6 +82,22 @@ export default function App() {
             >
               Save
             </Button>
+          </Col>
+        </Row>
+        <Row gutter={16} align={'middle'}>
+          <Col flex={'100px'}>
+            <Input
+              type="color"
+              value={bgColor}
+              onChange={(e) => setBgColor(e.target.value.toLowerCase())}
+            />
+          </Col>
+          <Col flex={'100px'}>
+            <Input
+              type="color"
+              value={textColor}
+              onChange={(e) => setTextColor(e.target.value.toLowerCase())}
+            />
           </Col>
         </Row>
       </div>

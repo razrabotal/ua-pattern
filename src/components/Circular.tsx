@@ -43,7 +43,7 @@ export default function Circular(props: Props) {
         <div
           className="inside-border"
           style={{
-            border: `${width / 50}px solid #b8b8b8`,
+            border: `${width / 50}px solid var(--text-color)`,
           }}
         ></div>
         <ReactCurvedText
@@ -58,7 +58,7 @@ export default function Circular(props: Props) {
           reversed={true}
           text="Академія дронаріум"
           textProps={{ style: { fontSize: width / 15 } }}
-          textPathProps={{ fill: '#b8b8b8' }}
+          textPathProps={{ fill: 'var(--text-color)' }}
         />
 
         <Word {...props} />
@@ -75,7 +75,7 @@ export default function Circular(props: Props) {
           reversed={false}
           text={props.name}
           textProps={{ style: { fontSize: width / 12 } }}
-          textPathProps={{ fill: '#b8b8b8' }}
+          textPathProps={{ fill: 'var(--text-color)' }}
         />
       </div>
     </div>
