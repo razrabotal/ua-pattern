@@ -16,6 +16,7 @@ export default function App() {
   const [ceilMath, setCeilMath] = useState<boolean>(true);
   const [hasWidthOffset, setHasWidthOffset] = useState<boolean>(false);
   const [altLayout, setAltLayout] = useState<boolean>(false);
+  const [withBackground, setWithBackground] = useState<boolean>(true);
 
   const handleCaptureClick = async () => {
     const canvas = await html2canvas(
@@ -99,14 +100,24 @@ export default function App() {
               onChange={(e) => setTextColor(e.target.value.toLowerCase())}
             />
           </Col>
+          <Col>
+            <Checkbox
+              checked={withBackground}
+              onChange={(e) => setWithBackground(e.target.checked)}
+            >
+              With background
+            </Checkbox>
+          </Col>
         </Row>
       </div>
       <br />
 
       <Circular
+        key={withBackground.toString()}
         ceilMath={ceilMath}
         hasWidthOffset={hasWidthOffset}
         altLayout={altLayout}
+        withBackground={withBackground}
         word={word}
         name={name}
       />

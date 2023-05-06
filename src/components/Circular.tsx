@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import ReactCurvedText from 'react-curved-text';
-import { Row, Col, Input, Button, Checkbox, Typography } from 'antd';
 import Word from './Word';
 
 interface Props {
@@ -9,6 +8,7 @@ interface Props {
   hasWidthOffset: boolean;
   altLayout: boolean;
   name: string;
+  withBackground: boolean;
 }
 
 export default function Circular(props: Props) {
@@ -35,50 +35,61 @@ export default function Circular(props: Props) {
     <div className="text-wrapper">
       <div
         className="circle-wrapper"
-        style={{
-          padding: width / 7,
-        }}
+        style={
+          props.withBackground
+            ? {
+                padding: width / 7,
+                backgroundColor: 'var(--bg-color)',
+              }
+            : null
+        }
         ref={elRef}
       >
-        <div
-          className="inside-border"
-          style={{
-            border: `${width / 50}px solid var(--text-color)`,
-          }}
-        ></div>
-        <ReactCurvedText
-          key={elRef}
-          width={width}
-          height={width}
-          cx={width / 2}
-          cy={width / 2}
-          rx={width / 2.45}
-          ry={width / 2.45}
-          startOffset={width / 4.3}
-          reversed={true}
-          text="Академія дронаріум"
-          textProps={{ style: { fontSize: width / 15 } }}
-          textPathProps={{ fill: 'var(--text-color)' }}
-        />
+        {props.withBackground && (
+          <>
+            <div
+              className="inside-border"
+              style={{
+                border: `${width / 50}px solid var(--text-color)`,
+              }}
+            ></div>
+            <ReactCurvedText
+              key={elRef}
+              width={width}
+              height={width}
+              cx={width / 2}
+              cy={width / 2}
+              rx={width / 2.45}
+              ry={width / 2.45}
+              startOffset={width / 4.3}
+              reversed={true}
+              text="Академія дронаріум"
+              textProps={{ style: { fontSize: width / 15 } }}
+              textPathProps={{ fill: 'var(--text-color)' }}
+            />
+          </>
+        )}
 
         <Word {...props} />
 
-        <ReactCurvedText
-          key={elRef}
-          width={width}
-          height={width}
-          cx={width / 2}
-          cy={width / 2}
-          rx={width / 2.2}
-          ry={width / 2.2}
-          startOffset={
-            (width * 2.84) / 4 - ((props.name.length / 2) * width) / 16.8
-          }
-          reversed={false}
-          text={props.name}
-          textProps={{ style: { fontSize: width / 12 } }}
-          textPathProps={{ fill: 'var(--text-color)' }}
-        />
+        {props.withBackground && (
+          <ReactCurvedText
+            key={elRef}
+            width={width}
+            height={width}
+            cx={width / 2}
+            cy={width / 2}
+            rx={width / 2.2}
+            ry={width / 2.2}
+            startOffset={
+              (width * 2.84) / 4 - ((props.name.length / 2) * width) / 16.8
+            }
+            reversed={false}
+            text={props.name}
+            textProps={{ style: { fontSize: width / 12 } }}
+            textPathProps={{ fill: 'var(--text-color)' }}
+          />
+        )}
       </div>
     </div>
   );
