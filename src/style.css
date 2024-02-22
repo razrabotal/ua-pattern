@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&display=swap');
 
+body {
+  background: #000;
+  padding: 8px;
+}
+
 .header {
   position: relative;
   z-index: 2;

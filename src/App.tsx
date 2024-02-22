@@ -2,8 +2,6 @@ import { useState } from 'react';
 import Circular from './components/Circular';
 import { elementToSVG } from 'dom-to-svg';
 import { Row, Col, Input, Button, Checkbox, Typography } from 'antd';
-const { Paragraph, Title } = Typography;
-
 import './style.css';
 
 export default function App() {
@@ -20,6 +18,7 @@ export default function App() {
   const handleCaptureClick = async () => {
     const svgDocument = elementToSVG(document.querySelector('.circle-wrapper'));
     const svgString = new XMLSerializer().serializeToString(svgDocument);
+
     const blob = new Blob([svgString], { type: 'image/svg+xml' });
     const link = document.createElement('a');
     link.download = `${word}.svg`;
@@ -37,9 +36,6 @@ export default function App() {
       }
     >
       <div className="header">
-        <Title level={5} style={{ margin: '0 0 10px' }}>
-          droneidentity
-        </Title>
         <Row gutter={16} align={'middle'} style={{ marginBottom: 8 }}>
           <Col flex={1}>
             <Input
@@ -121,13 +117,13 @@ export default function App() {
       />
 
       <br />
-      <Paragraph>
+      <Typography.Paragraph>
         dev:{' '}
         <a target="_blank" href="https://github.com/razrabotal">
           taras gordienko
-        </a>
-      </Paragraph>
-      <Paragraph>UKAD</Paragraph>
+        </a>{' '}
+        – ukad
+      </Typography.Paragraph>
     </div>
   );
 }
