@@ -38,8 +38,8 @@ export default function Circular(props: Props) {
         style={
           props.withBackground
             ? {
+                border: `${width / 90}px solid transparent`,
                 padding: width / 7,
-                backgroundColor: 'var(--bg-color)',
               }
             : null
         }
@@ -51,6 +51,7 @@ export default function Circular(props: Props) {
               className="inside-border"
               style={{
                 border: `${width / 50}px solid var(--text-color)`,
+                backgroundColor: 'var(--bg-color)',
               }}
             ></div>
             <ReactCurvedText
@@ -67,29 +68,26 @@ export default function Circular(props: Props) {
               textProps={{ style: { fontSize: width / 15 } }}
               textPathProps={{ fill: 'var(--text-color)' }}
             />
+            <ReactCurvedText
+              key={elRef}
+              width={width}
+              height={width}
+              cx={width / 2}
+              cy={width / 2}
+              rx={width / 2.2}
+              ry={width / 2.2}
+              startOffset={
+                (width * 2.84) / 4 - ((props.name.length / 2) * width) / 16.8
+              }
+              reversed={false}
+              text={props.name}
+              textProps={{ style: { fontSize: width / 12 } }}
+              textPathProps={{ fill: 'var(--text-color)' }}
+            />
           </>
         )}
 
         <Word {...props} />
-
-        {props.withBackground && (
-          <ReactCurvedText
-            key={elRef}
-            width={width}
-            height={width}
-            cx={width / 2}
-            cy={width / 2}
-            rx={width / 2.2}
-            ry={width / 2.2}
-            startOffset={
-              (width * 2.84) / 4 - ((props.name.length / 2) * width) / 16.8
-            }
-            reversed={false}
-            text={props.name}
-            textProps={{ style: { fontSize: width / 12 } }}
-            textPathProps={{ fill: 'var(--text-color)' }}
-          />
-        )}
       </div>
     </div>
   );
