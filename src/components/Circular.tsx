@@ -64,30 +64,33 @@ export default function Circular(props: Props) {
               ry={width / 2.45}
               startOffset={width / 4.3}
               reversed={true}
-              text="Академія дронаріум"
+              text="АКАДЕМІЯ ДРОНАРІУМ"
               textProps={{ style: { fontSize: width / 15 } }}
-              textPathProps={{ fill: 'var(--text-color)' }}
-            />
-            <ReactCurvedText
-              key={elRef}
-              width={width}
-              height={width}
-              cx={width / 2}
-              cy={width / 2}
-              rx={width / 2.2}
-              ry={width / 2.2}
-              startOffset={
-                (width * 2.84) / 4 - ((props.name.length / 2) * width) / 16.8
-              }
-              reversed={false}
-              text={props.name}
-              textProps={{ style: { fontSize: width / 12 } }}
               textPathProps={{ fill: 'var(--text-color)' }}
             />
           </>
         )}
 
         <Word {...props} />
+
+        {props.withBackground && (
+          <ReactCurvedText
+            key={elRef}
+            width={width}
+            height={width}
+            cx={width / 2}
+            cy={width / 2}
+            rx={width / 2.2}
+            ry={width / 2.2}
+            startOffset={
+              (width * 2.84) / 4 - ((props.name.length / 2) * width) / 16.8
+            }
+            reversed={false}
+            text={props.name.toUpperCase()}
+            textProps={{ style: { fontSize: width / 12 } }}
+            textPathProps={{ fill: 'var(--text-color)' }}
+          />
+        )}
       </div>
     </div>
   );
