@@ -27,25 +27,20 @@ export default function App() {
     // link.href = URL.createObjectURL(blob);
     // link.click();
 
-    html2canvas(document.querySelector('.circle-wrapper')).then((canvas) => {
-      document.body.appendChild(canvas);
-      var imgdata = canvas.toDataURL('image/jpg');
-      var doc = new jsPDF({
-        unit: 'px',
-        format: [canvas.offsetWidth, canvas.offsetHeight],
-        putOnlyUsedFonts: true,
-        floatPrecision: 16,
-      });
-      doc.addImage(
-        imgdata,
-        'JPG',
-        0,
-        0,
-        canvas.offsetWidth,
-        canvas.offsetHeight
-      );
-      doc.save('sample.pdf');
-    });
+    html2canvas(document.querySelector('.circle-wrapper'), { scale: 3 }).then(
+      (canvas) => {
+        var imgdata = canvas.toDataURL('image/jpg');
+        var doc = new jsPDF({
+          unit: 'px',
+          format: [canvas.width, canvas.height],
+          putOnlyUsedFonts: true,
+          floatPrecision: 16,
+          userUnit: 300,
+        });
+        doc.addImage(imgdata, 'JPG', 0, 0, canvas.width / 2, canvas.height / 2);
+        doc.save('sample.pdf');
+      }
+    );
   };
 
   return (
