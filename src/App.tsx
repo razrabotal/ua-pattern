@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Circular from './components/Circular';
-import { elementToSVG } from 'dom-to-svg';
+import { elementToSVG, inlineResources } from 'dom-to-svg';
 import { Row, Col, Input, Button, Checkbox, Typography } from 'antd';
 import './style.css';
 
@@ -18,6 +18,8 @@ export default function App() {
   const handleCaptureClick = async () => {
     const svgDocument = elementToSVG(document.querySelector('.circle-wrapper'));
     const svgString = new XMLSerializer().serializeToString(svgDocument);
+
+    await inlineResources(svgDocument.documentElement);
 
     const blob = new Blob([svgString], { type: 'image/svg+xml' });
     const link = document.createElement('a');
