@@ -32,10 +32,8 @@ export default function App() {
         var imgdata = canvas.toDataURL('image/jpg');
         var doc = new jsPDF({
           unit: 'px',
-          format: [canvas.width, canvas.height],
-          putOnlyUsedFonts: true,
+          format: [canvas.width / 2, canvas.height / 2],
           floatPrecision: 16,
-          userUnit: 300,
         });
         doc.addImage(imgdata, 'JPG', 0, 0, canvas.width / 2, canvas.height / 2);
         doc.save('sample.pdf');
