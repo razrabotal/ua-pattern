@@ -16,39 +16,14 @@ export default function App() {
   const [withBackground, setWithBackground] = useState<boolean>(true);
 
   const handleCaptureClick = async () => {
-    // const svgDocument = elementToSVG(document.querySelector('.circle-wrapper'));
-    // await inlineResources(svgDocument.documentElement);
-    // const svgString = new XMLSerializer().serializeToString(svgDocument);
-    // const blob = new Blob([svgString], { type: 'image/svg+xml' });
-    // const link = document.createElement('a');
-    // link.download = `${word}.svg`;
-    // link.href = URL.createObjectURL(blob);
-    // link.click();
-    // const lol = await fetch(
-    //   'https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf'
-    // ).then((response) => {
-    //   return response.arrayBuffer();
-    // });
-    // const svg = await satori(
-    //   document.querySelector('.circle-wrapper').innerHTML,
-    //   {
-    //     width: 600,
-    //     height: 400,
-    //     fonts: [
-    //       {
-    //         name: 'Roboto',
-    //         weight: 400,
-    //         style: 'normal',
-    //         data: lol,
-    //       },
-    //     ],
-    //   }
-    // );
-    // const blob = new Blob([svg], { type: 'image/svg+xml' });
-    // const link = document.createElement('a');
-    // link.download = `${word}.svg`;
-    // link.href = URL.createObjectURL(blob);
-    // link.click();
+    const svgDocument = elementToSVG(document.querySelector('.circle-wrapper'));
+    await inlineResources(svgDocument.documentElement);
+    const svgString = new XMLSerializer().serializeToString(svgDocument);
+    const blob = new Blob([svgString], { type: 'image/svg+xml' });
+    const link = document.createElement('a');
+    link.download = `${word}.svg`;
+    link.href = URL.createObjectURL(blob);
+    link.click();
   };
 
   return (
