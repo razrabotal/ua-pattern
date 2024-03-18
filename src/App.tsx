@@ -17,9 +17,8 @@ export default function App() {
 
   const handleCaptureClick = async () => {
     const svgDocument = elementToSVG(document.querySelector('.circle-wrapper'));
-    const svgString = new XMLSerializer().serializeToString(svgDocument);
-
     await inlineResources(svgDocument.documentElement);
+    const svgString = new XMLSerializer().serializeToString(svgDocument);
 
     const blob = new Blob([svgString], { type: 'image/svg+xml' });
     const link = document.createElement('a');
