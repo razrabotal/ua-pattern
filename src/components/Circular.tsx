@@ -33,6 +33,36 @@ export default function Circular(props: Props) {
     };
   }, [elRef]);
 
+  useEffect(() => {
+    // Function to convert text to path
+    const convertTextToPath = async () => {
+      try {
+        const font = await opentype.load('https://github.com/JetBrains/JetBrainsMono/blob/master/fonts/ttf/JetBrainsMono-Bold.ttf');
+        const pathData = font
+          .getPath('АКАДЕМІЯ ДРОНАРІУМ', 0, 0, width / 15)
+          .toPathData();
+
+        const newPathElement = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'path'
+        );
+        newPathElement.setAttribute('d', pathData);
+        newPathElement.setAttribute('fill', 'var(--text-color)');
+
+        if (svgRef.current) {
+          const textElement = svgRef.current.querySelector('text');
+          if (textElement) {
+            svgRef.current.replaceChild(newPathElement, textElement);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading font or converting text to path:', error);
+      }
+    };
+
+    convertTextToPath();
+  }, [width]);
+
   return (
     <div className="text-wrapper">
       <div
@@ -57,7 +87,6 @@ export default function Circular(props: Props) {
               }}
             ></div>
             <div ref={svgRef}>
-              'reergerg'
               <ReactCurvedText
                 key={elRef}
                 width={width}
