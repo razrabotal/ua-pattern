@@ -37,9 +37,10 @@ export default function Letter({ letter, kerning }: Props) {
     >
       {Object.keys(template)
         .map(Number)
-        .map((column) =>
+        .map((column, index) =>
           letter[column] ? (
             <div
+              key={index + column.toString()}
               className={`column ${+column % 2 !== 0 ? 'column-asc' : ''}`}
               style={{
                 gridColumnStart: column - minKey + 1,

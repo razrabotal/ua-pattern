@@ -38,7 +38,7 @@ export default function Circular(props: Props) {
         style={
           props.withBackground
             ? {
-                border: `${width / 90}px solid transparent`,
+                // border: `${width / 500}px solid transparent`,
                 padding: width / 7,
               }
             : null
@@ -65,7 +65,9 @@ export default function Circular(props: Props) {
               startOffset={width / 4.3}
               reversed={true}
               text="АКАДЕМІЯ ДРОНАРІУМ"
-              textProps={{ style: { fontSize: width / 15 } }}
+              textProps={{
+                style: { fontSize: width / 15, letterSpacing: width / 170 },
+              }}
               textPathProps={{ fill: 'var(--text-color)' }}
             />
           </>
@@ -87,7 +89,9 @@ export default function Circular(props: Props) {
             }
             reversed={false}
             text={props.name.toUpperCase()}
-            textProps={{ style: { fontSize: width / 12 } }}
+            textProps={{
+              style: { fontSize: width / 12, letterSpacing: width / 100 },
+            }}
             textPathProps={{ fill: 'var(--text-color)' }}
           />
         )}
