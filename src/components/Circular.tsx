@@ -33,10 +33,10 @@ export default function Circular(props: Props) {
     };
   }, [elRef]);
 
-  useEffect(() => {
-    const circleType = new CircleType(document.getElementById('myElement'));
-    circleType.radius(150).dir(-1);
-  }, []);
+  // useEffect(() => {
+  //   const circleType = new CircleType(document.getElementById('myElement'));
+  //   circleType.radius(150).dir(-1);
+  // }, []);
 
   return (
     <div className="text-wrapper">
@@ -61,7 +61,7 @@ export default function Circular(props: Props) {
                 backgroundColor: 'var(--bg-color)',
               }}
             ></div>
-            {/* <ReactCurvedText
+            <ReactCurvedText
               key={elRef}
               width={width}
               height={width}
@@ -74,13 +74,13 @@ export default function Circular(props: Props) {
               text="АКАДЕМІЯ ДРОНАРІУМ"
               textProps={{ style: { fontSize: width / 15 } }}
               textPathProps={{ fill: 'var(--text-color)' }}
-            /> */}
+            />
           </>
         )}
 
         <Word {...props} />
 
-        <p
+        {/* <p
           id="myElement"
           style={{
             position: 'relative',
@@ -90,9 +90,9 @@ export default function Circular(props: Props) {
           }}
         >
           lolkek che555burek
-        </p>
+        </p> */}
 
-        {/* {props.withBackground && (
+        {props.withBackground && (
           <ReactCurvedText
             key={elRef}
             width={width}
@@ -109,7 +109,7 @@ export default function Circular(props: Props) {
             textProps={{ style: { fontSize: width / 12 } }}
             textPathProps={{ fill: 'var(--text-color)' }}
           />
-        )} */}
+        )}
       </div>
     </div>
   );

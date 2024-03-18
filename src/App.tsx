@@ -3,6 +3,8 @@ import Circular from './components/Circular';
 import { elementToSVG, inlineResources } from 'dom-to-svg';
 import { Row, Col, Input, Button, Checkbox, Typography } from 'antd';
 import './style.css';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 export default function App() {
   const [word, setWord] = useState<string>('drone');
@@ -16,14 +18,34 @@ export default function App() {
   const [withBackground, setWithBackground] = useState<boolean>(true);
 
   const handleCaptureClick = async () => {
-    const svgDocument = elementToSVG(document.querySelector('.circle-wrapper'));
-    await inlineResources(svgDocument.documentElement);
-    const svgString = new XMLSerializer().serializeToString(svgDocument);
-    const blob = new Blob([svgString], { type: 'image/svg+xml' });
-    const link = document.createElement('a');
-    link.download = `${word}.svg`;
-    link.href = URL.createObjectURL(blob);
-    link.click();
+    // const svgDocument = elementToSVG(document.querySelector('.circle-wrapper'));
+    // await inlineResources(svgDocument.documentElement);
+    // const svgString = new XMLSerializer().serializeToString(svgDocument);
+    // const blob = new Blob([svgString], { type: 'image/svg+xml' });
+    // const link = document.createElement('a');
+    // link.download = `${word}.svg`;
+    // link.href = URL.createObjectURL(blob);
+    // link.click();
+
+    html2canvas(document.querySelector('.circle-wrapper')).then((canvas) => {
+      document.body.appendChild(canvas);
+      var imgdata = canvas.toDataURL('image/jpg');
+      var doc = new jsPDF({
+        unit: 'px',
+        format: [canvas.offsetWidth, canvas.offsetHeight],
+        putOnlyUsedFonts: true,
+        floatPrecision: 16,
+      });
+      doc.addImage(
+        imgdata,
+        'JPG',
+        0,
+        0,
+        canvas.offsetWidth,
+        canvas.offsetHeight
+      );
+      doc.save('sample.pdf');
+    });
   };
 
   return (
