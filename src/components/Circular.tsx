@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import ReactCurvedText from 'react-curved-text';
 import opentype from 'opentype.js';
 import Word from './Word';
+import CircleType from `circletype`;
 
 interface Props {
   word: string;
@@ -15,7 +16,6 @@ interface Props {
 export default function Circular(props: Props) {
   const elRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number>(0);
-  const svgRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,34 +34,11 @@ export default function Circular(props: Props) {
   }, [elRef]);
 
   useEffect(() => {
-    // Function to convert text to path
-    const convertTextToPath = async () => {
-      try {
-        const font = await opentype.load('https://github.com/JetBrains/JetBrainsMono/blob/master/fonts/ttf/JetBrainsMono-Bold.ttf');
-        const pathData = font
-          .getPath('АКАДЕМІЯ ДРОНАРІУМ', 0, 0, width / 15)
-          .toPathData();
+    // Instantiate `CircleType` with an HTML element.
+const circleType = new CircleType(document.getElementById('myElement'));
 
-        const newPathElement = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'path'
-        );
-        newPathElement.setAttribute('d', pathData);
-        newPathElement.setAttribute('fill', 'var(--text-color)');
-
-        if (svgRef.current) {
-          const textElement = svgRef.current.querySelector('text');
-          if (textElement) {
-            svgRef.current.replaceChild(newPathElement, textElement);
-          }
-        }
-      } catch (error) {
-        console.error('Error loading font or converting text to path:', error);
-      }
-    };
-
-    convertTextToPath();
-  }, [width]);
+circleType.radius(150);
+  }, [])
 
   return (
     <div className="text-wrapper">
@@ -86,28 +63,38 @@ export default function Circular(props: Props) {
                 backgroundColor: 'var(--bg-color)',
               }}
             ></div>
-            <div ref={svgRef}>
-              <ReactCurvedText
-                key={elRef}
-                width={width}
-                height={width}
-                cx={width / 2}
-                cy={width / 2}
-                rx={width / 2.45}
-                ry={width / 2.45}
-                startOffset={width / 4.3}
-                reversed={true}
-                text="АКАДЕМІЯ ДРОНАРІУМ"
-                textProps={{ style: { fontSize: width / 15 } }}
-                textPathProps={{ fill: 'var(--text-color)' }}
-              />
-            </div>
+            {/* <ReactCurvedText
+              key={elRef}
+              width={width}
+              height={width}
+              cx={width / 2}
+              cy={width / 2}
+              rx={width / 2.45}
+              ry={width / 2.45}
+              startOffset={width / 4.3}
+              reversed={true}
+              text="АКАДЕМІЯ ДРОНАРІУМ"
+              textProps={{ style: { fontSize: width / 15 } }}
+              textPathProps={{ fill: 'var(--text-color)' }}
+            /> */}
           </>
         )}
 
         <Word {...props} />
 
-        {props.withBackground && (
+        <p
+        id="myElement"
+          style={{
+            position: 'relative',
+            color: 'white',
+            zIndex: 101,
+            textAlign: 'center',
+          }}
+        >
+          lolkek cheburek
+        </p>
+
+        {/* {props.withBackground && (
           <ReactCurvedText
             key={elRef}
             width={width}
@@ -124,7 +111,7 @@ export default function Circular(props: Props) {
             textProps={{ style: { fontSize: width / 12 } }}
             textPathProps={{ fill: 'var(--text-color)' }}
           />
-        )}
+        )} */}
       </div>
     </div>
   );
