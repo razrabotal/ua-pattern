@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import ReactCurvedText from 'react-curved-text';
 import opentype from 'opentype.js';
 import Word from './Word';
-import CircleType from `circletype`;
+import CircleType from 'circletype';
 
 interface Props {
   word: string;
@@ -34,11 +34,9 @@ export default function Circular(props: Props) {
   }, [elRef]);
 
   useEffect(() => {
-    // Instantiate `CircleType` with an HTML element.
-const circleType = new CircleType(document.getElementById('myElement'));
-
-circleType.radius(150);
-  }, [])
+    const circleType = new CircleType(document.getElementById('myElement'));
+    circleType.radius(150).dir(-1);
+  }, []);
 
   return (
     <div className="text-wrapper">
@@ -83,7 +81,7 @@ circleType.radius(150);
         <Word {...props} />
 
         <p
-        id="myElement"
+          id="myElement"
           style={{
             position: 'relative',
             color: 'white',
@@ -91,7 +89,7 @@ circleType.radius(150);
             textAlign: 'center',
           }}
         >
-          lolkek cheburek
+          lolkek che555burek
         </p>
 
         {/* {props.withBackground && (
