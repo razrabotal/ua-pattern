@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ReactCurvedText from 'react-curved-text';
+import opentype from 'opentype.js';
 import Word from './Word';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 export default function Circular(props: Props) {
   const elRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number>(0);
+  const svgRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,20 +56,23 @@ export default function Circular(props: Props) {
                 backgroundColor: 'var(--bg-color)',
               }}
             ></div>
-            <ReactCurvedText
-              key={elRef}
-              width={width}
-              height={width}
-              cx={width / 2}
-              cy={width / 2}
-              rx={width / 2.45}
-              ry={width / 2.45}
-              startOffset={width / 4.3}
-              reversed={true}
-              text="АКАДЕМІЯ ДРОНАРІУМ"
-              textProps={{ style: { fontSize: width / 15 } }}
-              textPathProps={{ fill: 'var(--text-color)' }}
-            />
+            <div ref={svgRef}>
+              'reergerg'
+              <ReactCurvedText
+                key={elRef}
+                width={width}
+                height={width}
+                cx={width / 2}
+                cy={width / 2}
+                rx={width / 2.45}
+                ry={width / 2.45}
+                startOffset={width / 4.3}
+                reversed={true}
+                text="АКАДЕМІЯ ДРОНАРІУМ"
+                textProps={{ style: { fontSize: width / 15 } }}
+                textPathProps={{ fill: 'var(--text-color)' }}
+              />
+            </div>
           </>
         )}
 
