@@ -38,7 +38,7 @@ export default function Circular(props: Props) {
         style={
           props.withBackground
             ? {
-                // border: `${width / 500}px solid transparent`,
+                border: `${width / 90}px solid transparent`,
                 padding: width / 7,
               }
             : null
