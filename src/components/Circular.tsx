@@ -8,6 +8,7 @@ interface Props {
   hasWidthOffset: boolean;
   altLayout: boolean;
   name: string;
+  topName: string;
   withBackground: boolean;
 }
 
@@ -62,9 +63,12 @@ export default function Circular(props: Props) {
               cy={width / 2}
               rx={width / 2.45}
               ry={width / 2.45}
-              startOffset={width / 4.3}
+              startOffset={
+                (width * 2.55) / 4 -
+                ((props.topName.length / 2) * width) / 22.15
+              }
               reversed={true}
-              text="АКАДЕМІЯ ДРОНАРІУМ"
+              text={props.topName.toUpperCase()}
               textProps={{
                 style: { fontSize: width / 15, letterSpacing: width / 170 },
               }}
