@@ -7,6 +7,7 @@ import './style.css';
 export default function App() {
   const [word, setWord] = useState<string>('drone');
   const [name, setName] = useState<string>('Зеленський');
+  const [topName, setTopName] = useState<string>('Академія дронаріум');
   const [bgColor, setBgColor] = useState<string>('#262626');
   const [textColor, setTextColor] = useState<string>('#b8b8b8');
 
@@ -37,7 +38,11 @@ export default function App() {
       }
     >
       <div className="header">
-        <Row gutter={16} align={'middle'} style={{ marginBottom: 8 }}>
+        <Row
+          gutter={16}
+          align={'middle'}
+          style={{ marginBottom: 8, rowGap: 5 }}
+        >
           <Col flex={1}>
             <Input
               value={word}
@@ -48,6 +53,12 @@ export default function App() {
             <Input
               value={name}
               onChange={(e) => setName(e.target.value.toLowerCase())}
+            />
+          </Col>
+          <Col flex={1}>
+            <Input
+              value={topName}
+              onChange={(e) => setTopName(e.target.value.toLowerCase())}
             />
           </Col>
           <Col flex={3}>
@@ -115,6 +126,7 @@ export default function App() {
         withBackground={withBackground}
         word={word}
         name={name}
+        topName={topName}
       />
 
       <br />
